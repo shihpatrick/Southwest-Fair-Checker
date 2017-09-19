@@ -29,7 +29,7 @@ def main(argv):
 	last = driver.find_element(By.ID, 'lastName')
 	last.send_keys(last_name)
 
-  driver.find_element(By.ID, 'jb-button-check-in').click()
+  	driver.find_element(By.ID, 'jb-button-check-in').click()
 
 if __name__ == "__main__":
 	main(sys.argv[1:])
