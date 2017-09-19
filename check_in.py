@@ -4,11 +4,6 @@ from selenium.webdriver.common.by import By
 
 import sys
 
-
-#conf #: NAOTLS
-#first name: Brittany
-#last name: Hsu
-
 def main(argv):
 	number = argv[0]
 	first_name = argv[1]
