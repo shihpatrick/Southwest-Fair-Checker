@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Flight Automation</title>
+	</head>
+	<body>
+		{% csrf_token %}
+		<form>
+			<label for='title'>Conf #</label><br/>
+			<input type='text' name='title' id='title'><br/>
+
+			<label for='title'>First Name</label><br/>
+			<input type='text' name='first' id='first'><br/>
+
+			<label for='title'>Last Name</label><br/>
+			<input type='text' name='last' id='last'><br/>
+
+			<label for='title'>Departure Date</label><br/>
+			<input type='text' name='date' id='date'><br/>
+
+			<label for='title'>Departure Time</label><br/>
+			<input type='text' name='time' id='time'><br/>
+
+			<input type='submit' value='Submit'/>
+		</form>
+		
+	</body>
+</html>

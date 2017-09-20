@@ -11,8 +11,7 @@ def main(argv):
   arrive = input("Enter Arrive Location, e.g. (LAX): ")
   date = input("Enter Depart Date: ")
 
-  driver = webdriver.Chrome('/Users/patrickkshih/Desktop/projects/automateproj/chromedriver')
-  #driver = webdriver.Chrome('/Users/jimmysmacbook/Desktop/automateproj/chromedriver')
+  driver = webdriver.Chrome('./chromedriver')
   driver.get("https://www.southwest.com/")
 
   driver.find_element(By.ID, 'trip-type-one-way').click()
