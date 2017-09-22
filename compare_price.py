@@ -6,13 +6,18 @@ import sys
 
 def main(argv):
 
-  cmp_price = (int(input("Enter Price: ")))
-  depart = input("Enter Depart Location, e.g. (SJC): ")
-  arrive = input("Enter Arrive Location, e.g. (LAX): ")
-  date = input("Enter Depart Date: ")
+  # cmp_price = (int(input("Enter Price: ")))
+  # depart = input("Enter Depart Location, e.g. (SJC): ")
+  # arrive = input("Enter Arrive Location, e.g. (LAX): ")
+  # date = input("Enter Depart Date: ")
 
-  driver = webdriver.Chrome('/Users/patrickkshih/Desktop/projects/automateproj/chromedriver')
-  #driver = webdriver.Chrome('/Users/jimmysmacbook/Desktop/automateproj/chromedriver')
+  cmp_price = (int(argv[0]))
+  depart = argv[1]
+  arrive = argv[2]
+  date = argv[3]
+
+  # driver = webdriver.Chrome('/Users/patrickkshih/Desktop/projects/automateproj/chromedriver')
+  driver = webdriver.Chrome('/Users/jimmysmacbook/Desktop/automateproj/chromedriver')
   driver.get("https://www.southwest.com/")
 
   driver.find_element(By.ID, 'trip-type-one-way').click()
