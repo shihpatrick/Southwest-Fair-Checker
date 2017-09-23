@@ -4,8 +4,9 @@ from selenium.webdriver.common.by import By
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 
-import sys
+import sys, polling
 
 def main(argv):
   number = argv[0]
@@ -29,14 +30,29 @@ def main(argv):
 
 
   driver.find_element(By.ID, 'jb-button-check-in').click()
-  driver.implicitly_wait(5)
-  driver.switch_to_frame(driver.find_element_by_id('destination_publishing_iframe_swa_0'))
 
-  driver.implicitly_wait(5)
+  submit_button = polling.poll(
+      lambda: driver.find_elements_by_class_name('submit-button'),
+      step=0.5,
+      timeout=7,
+      ignore_exceptions=[NoSuchElementException])
 
-  button = driver.find_elements_by_class_name('actionable_button')
-  for b in button:
-    print(b.text)
+  submit_button[0].click()
+
+  action_buttons = driver.find_elements_by_class_name('actionable_large-button')
+
+
+  action_buttons[1].click() #email
+  email = driver.find_element_by_id('emailBoardingPass')
+  email.send_keys('email')
+
+  action_buttons[2].click() #phone
+  phonenumber = driver.find_element_by_id('textBoardingPass')
+  phonenumber.send_keys('phone')
+
+
+  submit = driver.find_element_by_id('form-mixin--submit-button')
+  submit.click()
 
 if __name__ == "__main__":
   main(sys.argv[1:])
