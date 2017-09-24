@@ -45,7 +45,7 @@ def main(argv):
   action_buttons[1].click() #email
   email = driver.find_element_by_id('emailBoardingPass')
   email.send_keys('email')
-
+  
   action_buttons[2].click() #phone
   phonenumber = driver.find_element_by_id('textBoardingPass')
   phonenumber.send_keys('phone')
