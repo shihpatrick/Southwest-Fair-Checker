@@ -4,26 +4,13 @@ from selenium.webdriver.common.by import By
 
 import sys
 
-def main(argv):
-
-  # cmp_price = (int(input("Enter Price: ")))
-  # depart = input("Enter Depart Location, e.g. (SJC): ")
-  # arrive = input("Enter Arrive Location, e.g. (LAX): ")
-  # date = input("Enter Depart Date: ")
-
-  cmp_price = (int(argv[0]))
-  depart = argv[1]
-  arrive = argv[2]
-  date = argv[3]
-
-  # driver = webdriver.Chrome('/Users/patrickkshih/Desktop/projects/automateproj/chromedriver')
-  driver = webdriver.Chrome('/Users/jimmysmacbook/Desktop/automateproj/chromedriver')
+def scrape_site(cmp_price, depart, arrive, date):
+  driver = webdriver.Chrome('/Users/patrickkshih/Desktop/Southwest-Fare-Checker/chromedriver')
   driver.get("https://www.southwest.com/")
 
   driver.find_element(By.ID, 'trip-type-one-way').click()
 
-  depart_field = driver.find_element(By.ID, 'air-city-departure')
-  depart_field.send_keys(depart)
+  driver.find_element(By.ID, 'air-city-departure').send_keys("LAX")
 
   arrive_field = driver.find_element(By.ID, 'air-city-arrival')
   arrive_field.send_keys(arrive)
@@ -34,7 +21,24 @@ def main(argv):
 
   driver.find_element(By.ID, 'jb-booking-form-submit-button').click()
 
-  prices = driver.find_elements_by_class_name('product_price')
+  url = driver.current_url
+
+  return url
+
+def main(argv):
+  cmp_price = int(argv[0])
+
+  res_url = scrape_site(cmp_price, argv[1], argv[2], argv[3])
+
+  # prices = [] 
+
+  # for elem in driver.find_elements_by_class_name('fare-button--value-total'):
+  #   print(elem.text)
+
+  # driver.close()
+
+  # print(prices)
+
   index = 0
 
   convert_prices = []
